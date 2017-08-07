@@ -55,7 +55,7 @@ int main()
           double cte = std::stod(j[1]["cte"].get<std::string>());
           //double speed = std::stod(j[1]["speed"].get<std::string>());
           //double angle = std::stod(j[1]["steering_angle"].get<std::string>());
-          double steer_value;
+          double steer_val;
           /*
           * TODO: Calcuate steering value here, remember the steering value is
           * [-1, 1].
@@ -64,14 +64,14 @@ int main()
           */
             pid.UpdateError(cte);
             std::cout << "Kp: " << pid.Kp << ", Kd: " << pid.Kd << ", Ki: " << pid.Ki << std::endl;
-            steer_value = - pid.Kp * pid.p_error - pid.Kd * pid.d_error - pid.Ki * pid.i_error;
-            steer_value = fmin(fmax(steer_value, -1.0), 1.0);
+            steer_val = - pid.Kp * pid.p_error - pid.Kd * pid.d_error - pid.Ki * pid.i_error;
+            steer_val = fmin(fmax(steer_val, -1.0), 1.0);
 
           // DEBUG
-          std::cout << "CTE: " << cte << " Steering Value: " << steer_value << std::endl;
+          std::cout << "CTE: " << cte << " Steering Value: " << steer_val << std::endl;
 
           json msgJson;
-          msgJson["steering_angle"] = steer_value;
+          msgJson["steering_angle"] = steer_val;
           msgJson["throttle"] = 0.3;
           auto msg = "42[\"steer\"," + msgJson.dump() + "]";
           //std::cout << msg << std::endl;

@@ -25,17 +25,10 @@ void PID::Init(double Kp, double Ki, double Kd) {
 
 void PID::UpdateError(double cte) {
     ++stepsCounter;
-    // differential error, equals to (previous_error - new_error)/time_diff
-    // (time_diff is 1)
     d_error = cte - p_error;
-    
-    // integral error, equals to the sum of all the errors
-    i_error += cte;
-    
-    //"proportional" error. = current error!
+    i_error = cte + i_error;
     p_error = cte;
     
-
 }
 
 double PID::TotalError() {
