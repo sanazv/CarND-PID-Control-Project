@@ -1,6 +1,6 @@
 #include "PID.h"
 
-using namespace std;
+//using namespace std;
 
 /*
 * TODO: Complete the PID class.
@@ -32,5 +32,6 @@ void PID::UpdateError(double cte) {
 }
 
 double PID::TotalError() {
+	return 0.0;
 }
 

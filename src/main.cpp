@@ -34,9 +34,9 @@ int main()
 
   PID pid;
   // TODO: Initialize the pid variable.
-    double Kp = 0.18;
+    double Kp = 0.188;
     double Ki = 0.000;
-    double Kd = 3.14;
+    double Kd = 3.147;
     
     pid.Init(Kp, Ki, Kd);
     
